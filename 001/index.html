@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>姚彦成老师 - 资深英语教学专家</title>
+    <style>
+        /* 全局样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", sans-serif;
+        }
+
+        /* 变量定义 - 颜色/字体 */
+        :root {
+            --primary: #2c5282; /* 主色-深蓝（专业） */
+            --secondary: #ed8936; /* 辅助色-橙（亲和力） */
+            --light: #f7fafc; /* 浅背景 */
+            --dark: #2d3748; /* 深文字 */
+            --gray: #718096; /* 浅文字 */
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* 导航栏 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: white;
+            box-shadow: var(--shadow);
+            z-index: 100;
+            transition: var(--transition);
+        }
+
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.8rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        /* 英雄区 */
+        .hero {
+            margin-top: 70px;
+            background: linear-gradient(135deg, var(--primary) 0%, #3182ce 100%);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.2;
+        }
+
+        .hero-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s ease forwards;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s ease 0.3s forwards;
+        }
+
+        .hero .tagline {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #fef08a;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s ease 0.6s forwards;
+        }
+
+        /* 数字统计模块 */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            padding: 2rem 1rem;
+            background-color: white;
+            margin: -2rem 1rem 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* 通用模块样式 */
+        .section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 1rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            display: inline-block;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--secondary);
+        }
+
+        /* 关于老师模块 */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .about {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .about-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .about-card.animate {
+            animation: fadeUp 0.8s ease forwards;
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .about-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .about-card h3 i {
+            color: var(--secondary);
+        }
+
+        .about-card ul {
+            list-style: none;
+            margin-left: 0.5rem;
+        }
+
+        .about-card li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .about-card li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        /* 教学成果模块 */
+        .achievements {
+            background-color: white;
+            padding: 2rem 0;
+        }
+
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .achievement-card {
+            background-color: var(--light);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+            opacity: 0;
+            transform: scale(0.95);
+        }
+
+        .achievement-card.animate {
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .achievement-card:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .achievement-card h4 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .achievement-card p {
+            font-size: 0.85rem;
+            color: var(--gray);
+            transition: var(--transition);
+        }
+
+        .achievement-card:hover p {
+            color: white;
+        }
+
+        /* 联系模块 */
+        .contact {
+            background: linear-gradient(135deg, var(--primary) 0%, #3182ce 100%);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+
+        .contact h2 {
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+        }
+
+        .contact-card {
+            background-color: white;
+            color: var(--dark);
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-item i {
+            color: var(--secondary);
+            font-size: 1.2rem;
+        }
+
+        /* 返回顶部按钮 */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: var(--secondary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        /* 动画定义 */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes countUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+            }
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            .stats {
+                gap: 1rem;
+            }
+            .stat-number {
+                font-size: 1.8rem;
+            }
+            .section-title h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar-container {
+                padding: 0.8rem 0.5rem;
+            }
+            .logo {
+                font-size: 1rem;
+            }
+            .nav-links a {
+                font-size: 0.8rem;
+            }
+            .stat-item {
+                padding: 0.5rem;
+            }
+            .stat-number {
+                font-size: 1.5rem;
+            }
+            .contact-item {
+                font-size: 1rem;
+            }
+        }
+    </style>
+    <!-- 引入图标库 -->
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<!-- 导航栏 -->
+<nav class="navbar" id="navbar">
+    <div class="navbar-container">
+        <div class="logo">
+            <i class="fas fa-graduation-cap"></i>
+            姚彦成<span>英语教学</span>
+        </div>
+        <div class="nav-links">
+            <a href="#about">关于老师</a>
+            <a href="#experience">教学经历</a>
+            <a href="#features">教学特点</a>
+            <a href="#achievements">教学成果</a>
+            <a href="#contact">联系老师</a>
+        </div>
+    </div>
+</nav>
+
+<!-- 英雄区 -->
+<section class="hero">
+    <div class="hero-container">
+        <h1>姚彦成 · 资深英语教学专家</h1>
+        <p>12年教学经验 | 公立中学+教育机构双重背景</p>
+        <div class="tagline">教育信念：让孩子学习带风 (Learning with confidence)</div>
+    </div>
+</section>
+
+<!-- 数字统计 -->
+<div class="stats">
+    <div class="stat-item">
+        <div class="stat-number" id="year-count">12</div>
+        <div class="stat-label">年教学经验</div>
+    </div>
+    <div class="stat-item">
+        <div class="stat-number" id="school-count">3</div>
+        <div class="stat-label">年公立中学任教</div>
+    </div>
+    <div class="stat-item">
+        <div class="stat-number" id="manager-count">10</div>
+        <div class="stat-label">年教育机构管理</div>
+    </div>
+    <div class="stat-item">
+        <div class="stat-number" id="student-count">数十</div>
+        <div class="stat-label">名名校毕业学员</div>
+    </div>
+</div>
+
+<!-- 关于老师模块 -->
+<section class="section" id="about">
+    <div class="section-title">
+        <h2>关于姚老师</h2>
+    </div>
+    <div class="about">
+        <div class="about-card" id="experience">
+            <h3><i class="fas fa-briefcase"></i> 教学经历</h3>
+            <ul>
+                <li>深圳市某公立中学任教3年</li>
+                <li>近10年教育机构负责人经验</li>
+                <li>负责教学计划制定与备课，保障教学质量</li>
+                <li>定期参与教研活动，持续提升教学水平</li>
+                <li>维护课堂氛围，与家长保持高效沟通</li>
+            </ul>
+        </div>
+        <div class="about-card" id="features">
+            <h3><i class="fas fa-star"></i> 教学特点</h3>
+            <ul>
+                <li>精准把握中高考难点考点，框架式梳理语言思路</li>
+                <li>善于将疑难点用通俗易懂的方式讲解</li>
+                <li>360°关注学生状态，打造高效课堂</li>
+                <li>课后跟踪教学效果，确保知识无遗留</li>
+                <li>营造正能量学习氛围，教授正确学习方法</li>
+            </ul>
+        </div>
+        <div class="about-card">
+            <h3><i class="fas fa-graduation-cap"></i> 教育背景</h3>
+            <ul>
+                <li>年龄：34岁，现居深圳南山</li>
+                <li>最高学历：本科</li>
+                <li>毕业院校：河北师范大学 (2006.09-2010.06)</li>
+                <li>专业：英语教育专业</li>
+            </ul>
+        </div>
+        <div class="about-card">
+            <h3><i class="fas fa-certificate"></i> 技能证书 & 奖项</h3>
+            <ul>
+                <li>大学英语六级</li>
+                <li>英语专业四级口语及笔试证书</li>
+                <li>高级中学英语教师资格证</li>
+                <li>优秀教师称号、年度优秀教师</li>
+                <li>教师基本功比赛三等奖</li>
+                <li>CCTV全国青少年英语风采大赛优秀指导教师</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- 教学成果模块 -->
+<section class="achievements" id="achievements">
+    <div class="section-title">
+        <h2>教学成果</h2>
+    </div>
+    <div class="section">
+        <div class="achievement-grid">
+            <div class="achievement-card">
+                <h4>张*允</h4>
+                <p>深圳中学</p>
+            </div>
+            <div class="achievement-card">
+                <h4>朱*涵</h4>
+                <p>深圳中学</p>
+            </div>
+            <div class="achievement-card">
+                <h4>邢*璐</h4>
+                <p>宝安中学</p>
+            </div>
+            <div class="achievement-card">
+                <h4>覃*仪</h4>
+                <p>南科大附中</p>
+            </div>
+            <div class="achievement-card">
+                <h4>陈*荣</h4>
+                <p>南科大附中</p>
+            </div>
+            <div class="achievement-card">
+                <h4>马*扬</h4>
+                <p>深外分校</p>
+            </div>
+            <div class="achievement-card">
+                <h4>王*翔</h4>
+                <p>牛津大学</p>
+            </div>
+            <div class="achievement-card">
+                <h4>文*超</h4>
+                <p>伦敦大学</p>
+            </div>
+            <div class="achievement-card">
+                <h4>陈*惠</h4>
+                <p>中山大学</p>
+            </div>
+            <div class="achievement-card">
+                <h4>梁*宇</h4>
+                <p>武汉大学</p>
+            </div>
+            <div class="achievement-card">
+                <h4>陈*瀚</h4>
+                <p>浙江大学</p>
+            </div>
+            <div class="achievement-card">
+                <h4>徐*谷</h4>
+                <p>中国民航大学</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 联系模块 -->
+<section class="contact" id="contact">
+    <h2>联系姚老师</h2>
+    <div class="contact-card">
+        <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <span>18948770486</span>
+        </div>
+        <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>深圳南山</span>
+        </div>
+        <div class="contact-item">
+            <i class="fas fa-quote-left"></i>
+            <span>让孩子学习带风，自信学英语</span>
+        </div>
+    </div>
+</section>
+
+<!-- 返回顶部按钮 -->
+<div class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+</div>
+
+<script>
+    // 1. 数字增长动画
+    function countUp(elementId, target, duration = 2000) {
+        const element = document.getElementById(elementId);
+        const start = 0;
+        const increment = target / (duration / 16);
+        let current = start;
+
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                clearInterval(timer);
+                current = target;
+            }
+            element.textContent = Math.floor(current);
+            element.style.animation = "countUp 0.5s ease forwards";
+        }, 16);
+    }
+
+    // 2. 监听滚动，实现元素渐入动画
+    function checkScroll() {
+        // 导航栏吸顶效果
+        const navbar = document.getElementById('navbar');
+        if (window.scrollY > 50) {
+            navbar.style.padding = "0.5rem 1rem";
+            navbar.style.backgroundColor = "white";
+            navbar.style.boxShadow = "0 2px 10px rgba(0,0,0,0.1)";
+        } else {
+            navbar.style.padding = "0.8rem 1rem";
+            navbar.style.backgroundColor = "white";
+            navbar.style.boxShadow = "0 4px 6px rgba(0,0,0,0.1)";
+        }
+
+        // 返回顶部按钮显示/隐藏
+        const backToTop = document.getElementById('backToTop');
+        if (window.scrollY > 300) {
+            backToTop.classList.add('show');
+        } else {
+            backToTop.classList.remove('show');
+        }
+
+        // 元素渐入动画
+        const aboutCards = document.querySelectorAll('.about-card');
+        aboutCards.forEach(card => {
+            const cardTop = card.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            if (cardTop < windowHeight * 0.85) {
+                card.classList.add('animate');
+            }
+        });
+
+        const achievementCards = document.querySelectorAll('.achievement-card');
+        achievementCards.forEach((card, index) => {
+            const cardTop = card.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            if (cardTop < windowHeight * 0.85) {
+                setTimeout(() => {
+                    card.classList.add('animate');
+                }, index * 100);
+            }
+        });
+    }
+
+    // 3. 返回顶部功能
+    document.getElementById('backToTop').addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // 4. 平滑滚动导航
+    document.querySelectorAll('.nav-links a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // 5. 页面加载初始化
+    window.addEventListener('load', () => {
+        // 触发数字动画
+        countUp('year-count', 12);
+        countUp('school-count', 3);
+        countUp('manager-count', 10);
+
+        // 触发滚动检查
+        checkScroll();
+    });
+
+    // 监听滚动事件
+    window.addEventListener('scroll', checkScroll);
+</script>
+</body>
+</html>

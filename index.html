@@ -1,0 +1,574 @@
+<html lang="zh"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>姚彦成 · 英语名师 | 自信带风</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(145deg, #0b1f33 0%, #123b5e 40%, #1e4d6f 100%);
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* 动态波浪背景 (教育寓意：如海浪般涌动的知识) */
+        .wave-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .wave-bg svg {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: auto;
+            animation: waveFloat 12s ease-in-out infinite alternate;
+        }
+
+        @keyframes waveFloat {
+            0% { transform: translateY(0px) scale(1); }
+            100% { transform: translateY(-30px) scale(1.02); }
+        }
+
+        /* 主卡片——磨砂玻璃效果 + 微动感 */
+        .resume-card {
+            position: relative;
+            z-index: 10;
+            max-width: 480px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.86);
+            backdrop-filter: blur(14px) saturate(180%);
+            -webkit-backdrop-filter: blur(14px) saturate(180%);
+            border-radius: 48px 48px 42px 42px;
+            box-shadow: 0 30px 60px rgba(0, 15, 30, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+            overflow: hidden;
+            transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.1), box-shadow 0.4s;
+            animation: cardGlow 4s infinite alternate;
+        }
+
+        .resume-card:hover {
+            transform: scale(1.01) translateY(-6px);
+            box-shadow: 0 40px 70px rgba(0, 30, 50, 0.7), 0 0 0 2px rgba(255, 240, 180, 0.5) inset;
+        }
+
+        @keyframes cardGlow {
+            0% { box-shadow: 0 25px 45px rgba(0, 25, 50, 0.5), 0 0 0 1px rgba(255, 250, 210, 0.3) inset; }
+            100% { box-shadow: 0 30px 60px rgba(0, 50, 80, 0.7), 0 0 0 2px rgba(255, 255, 230, 0.5) inset; }
+        }
+
+        /* 顶部色带 + 头像区 */
+        .profile-header {
+            background: linear-gradient(112deg, #1e3b4f, #235b7c);
+            padding: 2rem 1.8rem 1.5rem 1.8rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-header::before {
+            content: "✦";
+            font-size: 12rem;
+            color: rgba(255, 255, 255, 0.06);
+            position: absolute;
+            bottom: -40px;
+            right: -30px;
+            transform: rotate(15deg);
+            font-family: serif;
+            pointer-events: none;
+        }
+
+        .name-title {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 1.2rem;
+        }
+
+        .name {
+            font-size: 2.4rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            line-height: 1.1;
+            text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3);
+            animation: fadeInRight 0.8s ease-out;
+        }
+
+        .name small {
+            font-size: 1rem;
+            font-weight: 400;
+            opacity: 0.9;
+            display: block;
+            margin-top: 4px;
+            letter-spacing: 0.5px;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            padding: 0.5rem 1.2rem;
+            border-radius: 60px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            animation: fadeInLeft 0.8s ease-out;
+        }
+
+        .motto {
+            font-size: 1.7rem;
+            font-weight: 300;
+            font-style: italic;
+            margin: 1rem 0 0.8rem 0;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+            background: rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            padding: 0.1rem 1.2rem 0.1rem 0.8rem;
+            border-radius: 0 60px 60px 0;
+            backdrop-filter: blur(3px);
+            animation: glowPulse 3s infinite;
+        }
+
+        .motto span {
+            font-weight: 600;
+            background: linear-gradient(145deg, #f9f3c5, #ffec9e);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px #ffd966;
+        }
+
+        @keyframes glowPulse {
+            0% { text-shadow: 0 0 5px #ffe484; }
+            50% { text-shadow: 0 0 15px #ffdd55, 0 0 5px #fff0b5; }
+            100% { text-shadow: 0 0 5px #ffe484; }
+        }
+
+        /* 基础信息网格 */
+        .info-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem 1rem;
+            margin-top: 1.4rem;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 44px;
+            padding: 1.2rem 1.2rem;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem 0.8rem;
+            font-size: 0.98rem;
+            font-weight: 400;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 0.4rem 1rem 0.4rem 0.9rem;
+            border-radius: 40px;
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #f0f9ff;
+            transition: 0.2s;
+        }
+
+        .info-item:hover {
+            background: rgba(255, 215, 140, 0.2);
+            border-color: #ffd966;
+            transform: translateY(-2px);
+        }
+
+        .info-item i {
+            font-size: 1.2rem;
+            filter: drop-shadow(0 2px 4px black);
+        }
+
+        /* 主体内容 */
+        .main-content {
+            padding: 1.8rem 1.6rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 2rem;
+            animation: fadeUp 0.6s ease backwards;
+            animation-delay: calc(0.1s * var(--i, 1));
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #113946;
+            letter-spacing: -0.2px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 3px solid rgba(35, 110, 150, 0.25);
+            padding-bottom: 6px;
+            margin-bottom: 1rem;
+        }
+
+        .section-title span {
+            background: linear-gradient(135deg, #1e5f7a, #2a86b3);
+            color: white;
+            font-size: 0.9rem;
+            width: 28px;
+            height: 28px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            box-shadow: 0 6px 12px #0c3346;
+        }
+
+        /* 日常工作列表 & 特点 */
+        .bullet-list {
+            list-style: none;
+        }
+
+        .bullet-list li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.8rem;
+            position: relative;
+            font-size: 0.98rem;
+            color: #1f3f4d;
+            line-height: 1.5;
+        }
+
+        .bullet-list li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #2c7da0;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: transform 0.2s;
+        }
+
+        .bullet-list li:hover::before {
+            transform: scale(1.3);
+            color: #f4b942;
+        }
+
+        .badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem 0.8rem;
+            margin-top: 0.8rem;
+        }
+
+        .badge-skill {
+            background: white;
+            border-radius: 40px;
+            padding: 0.4rem 1.3rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #144e6b;
+            box-shadow: 0 5px 12px rgba(0, 30, 50, 0.15);
+            border: 1px solid rgba(35, 130, 180, 0.3);
+            transition: all 0.2s ease;
+            backdrop-filter: blur(4px);
+        }
+
+        .badge-skill:hover {
+            background: #1f5979;
+            color: white;
+            border-color: #ffbc6c;
+            transform: scale(1.02) translateY(-3px);
+            box-shadow: 0 12px 18px #0b3346;
+        }
+
+        /* 荣誉 & 证书区域 */
+        .award-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.8rem;
+        }
+
+        .award-item {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(2px);
+            border-radius: 24px;
+            padding: 0.7rem 0.7rem 0.7rem 1rem;
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: #0a394f;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 6px 14px rgba(30, 90, 120, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.25s;
+        }
+
+        .award-item:hover {
+            background: #ffffffee;
+            border-color: #f3b547;
+            transform: translateY(-4px) rotate(0.5deg);
+        }
+
+        .award-item .emoji {
+            font-size: 1.2rem;
+            margin-right: 4px;
+        }
+
+        /* 教学成果名片 */
+        .student-showcase {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.9rem 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .student-card {
+            background: linear-gradient(125deg, #ffffff, #f5fafd);
+            border-radius: 22px;
+            padding: 0.8rem 0.5rem;
+            text-align: center;
+            box-shadow: 0 12px 25px -8px rgba(0, 80, 120, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            transition: 0.2s;
+            font-weight: 550;
+            color: #0c3a50;
+            font-size: 0.95rem;
+            backdrop-filter: blur(2px);
+        }
+
+        .student-card span {
+            display: block;
+            font-size: 0.75rem;
+            color: #3f6f8a;
+            margin-top: 4px;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+        }
+
+        .student-card:hover {
+            background: #e2f0f9;
+            transform: scale(0.98) translateY(-4px);
+            border-color: #dca733;
+            box-shadow: 0 18px 28px #124257;
+        }
+
+        .university-highlight {
+            color: #a7601a;
+            font-weight: 600;
+        }
+
+        .footer-contact {
+            background: #d9eaf3;
+            margin: 1.8rem -0.2rem -0.2rem -0.2rem;
+            padding: 1.2rem 1.8rem;
+            border-radius: 42px 42px 32px 32px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-items: center;
+            border: 1px solid white;
+            color: #043b50;
+            font-weight: 500;
+            box-shadow: 0 -4px 20px rgba(0, 40, 60, 0.2);
+            transition: 0.3s;
+        }
+
+        .footer-contact div {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 1rem;
+        }
+
+        .footer-contact .phone {
+            font-size: 1.3rem;
+            font-weight: 650;
+            letter-spacing: 1px;
+            color: #163a57;
+            background: rgba(255, 255, 255, 0.6);
+            padding: 0.3rem 1rem;
+            border-radius: 60px;
+        }
+
+        /* 动画定义 */
+        @keyframes fadeInRight {
+            0% { opacity: 0; transform: translateX(20px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInLeft {
+            0% { opacity: 0; transform: translateX(-15px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeUp {
+            0% { opacity: 0; transform: translateY(15px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 模拟图标用文本 */
+        .icon-emoji {
+            filter: drop-shadow(0 2px 2px #205b7a);
+        }
+    </style>
+</head>
+<body>
+<!-- 动态波浪背景 SVG (装饰) -->
+<div class="wave-bg" style="transform: translate(1.71354px, -1.41871px);">
+    <svg viewBox="0 0 1440 320" preserveAspectRatio="none" width="100%" height="100%">
+        <path fill="#ffffff" fill-opacity="0.2" d="M0,224L48,234.7C96,245,192,267,288,261.3C384,256,480,224,576,213.3C672,203,768,213,864,234.7C960,256,1056,288,1152,282.7C1248,277,1344,235,1392,213.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        <path fill="#d4ecff" fill-opacity="0.15" d="M0,256L48,250.7C96,245,192,235,288,224C384,213,480,203,576,208C672,213,768,235,864,250.7C960,267,1056,277,1152,261.3C1248,245,1344,203,1392,181.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+    </svg>
+</div>
+
+<!-- 主卡片 -->
+<div class="resume-card">
+    <!-- 头部区域 -->
+    <div class="profile-header">
+        <div class="name-title">
+            <div class="name">
+                姚彦成
+                <small>Yao Yancheng</small>
+            </div>
+            <div class="badge">
+                ⚡ 教龄12年
+            </div>
+        </div>
+        <div class="motto">
+            <span>让孩子学习带风</span> ✦
+        </div>
+        <div class="motto" style="font-size: 1rem; font-style: normal; margin-top: 0.3rem; background: transparent; padding-left: 0;">
+            Learning with confidence
+        </div>
+
+        <!-- 个人信息网格 年龄/学历/电话/现居 -->
+        <div class="info-grid">
+            <div class="info-item" style="transition: 0.25s;"><i>📅</i> 34岁 · 深圳南山</div>
+            <div class="info-item" style="transition: 0.25s;"><i>🎓</i> 河北师范大学</div>
+            <div class="info-item" style="transition: 0.25s;"><i>📞</i> 189-4877-0486</div>
+            <div class="info-item" style="transition: 0.25s;"><i>🏅</i> 高级中学英语</div>
+        </div>
+    </div>
+
+    <!-- 主体内容 -->
+    <div class="main-content">
+        <!-- 教学经历 & 特点 -->
+        <div class="section" style="--i:1;">
+            <div class="section-title"><span>📘</span> 公立·机构·负责人</div>
+            <ul class="bullet-list">
+                <li>深圳公立中学任教3年 + 近10年教育机构负责人，累计12年一线英语教学</li>
+                <li>负责教学计划/备课/课堂氛围，确保教学质量；与家长高频沟通，定期反馈</li>
+                <li>定期组织教研，按学生情况定制内容；持续提升学术水平</li>
+            </ul>
+        </div>
+
+        <!-- 教学特点 三个亮点 -->
+        <div class="section" style="--i:2;">
+            <div class="section-title"><span>🎯</span> 教学特点</div>
+            <ul class="bullet-list">
+                <li><strong>精准中高考考点</strong> — 框架式梳理语言疑难点，易懂易理解</li>
+                <li><strong>360°责任心课堂</strong> — 全神贯注高效课堂，课后追踪效果，不留问题</li>
+                <li><strong>正能量学习氛围</strong> — 树立榜样，教授正确方法</li>
+            </ul>
+            <div class="badge-container">
+                <span class="badge-skill" style="transition: 0.25s;">📚 中高考难点解析</span>
+                <span class="badge-skill" style="transition: 0.25s;">🧠 框架式教学</span>
+                <span class="badge-skill" style="transition: 0.25s;">⚡ 高效课堂</span>
+            </div>
+        </div>
+
+        <!-- 获奖 & 证书 (双栏) -->
+        <div class="section" style="--i:3;">
+            <div class="section-title"><span>🏆</span> 荣誉 · 技能</div>
+            <div class="award-grid">
+                <div class="award-item"><span class="emoji">📌</span> 英语专业八级 (TEM-4口语笔试)</div>
+                <div class="award-item"><span class="emoji">🎓</span> 大学英语六级 (CET-6)</div>
+                <div class="award-item"><span class="emoji">✅</span> 教师资格证 (高中英语)</div>
+                <div class="award-item"><span class="emoji">🏅</span> 优秀教师 · 年度教师</div>
+                <div class="award-item"><span class="emoji">✏️</span> 教师基本功比赛三等奖</div>
+                <div class="award-item"><span class="emoji">📺</span> CCTV英语风采优秀指导</div>
+            </div>
+        </div>
+
+        <!-- 教学成果 学员去向 (动态卡片) -->
+        <div class="section" style="--i:4;">
+            <div class="section-title"><span>🌟</span> 优秀学子 (部分)</div>
+            <div class="student-showcase">
+                <div class="student-card">张*允 <span>深圳中学</span></div>
+                <div class="student-card">邢*璐 <span>宝安中学</span></div>
+                <div class="student-card">覃*仪 <span>南科大附中</span></div>
+                <div class="student-card">朱*涵 <span>深圳中学</span></div>
+                <div class="student-card">陈*荣 <span>南科大附中</span></div>
+                <div class="student-card">马*扬 <span>深外分校</span></div>
+                <div class="student-card university-highlight" style="background: linear-gradient(135deg, rgb(253, 241, 214), rgb(255, 227, 181)); border: 1px solid rgb(245, 179, 66);">王*翔 <span>牛津大学</span></div>
+                <div class="student-card university-highlight" style="background: linear-gradient(135deg, rgb(253, 241, 214), rgb(255, 227, 181)); border: 1px solid rgb(245, 179, 66);">文*超 <span>伦敦大学</span></div>
+                <div class="student-card">陈*惠 <span>中山大学</span></div>
+                <div class="student-card">梁*宇 <span>武汉大学</span></div>
+                <div class="student-card">陈*瀚 <span>浙江大学</span></div>
+                <div class="student-card">徐*谷 <span>中国民航大学</span></div>
+            </div>
+            <p style="font-size:0.8rem; margin-top:10px; color:#2d5775; opacity:0.8;">⭐ 更多学子进入国内外名校，英语提分显著</p>
+        </div>
+
+        <!-- 底部联系方式，加强信任感 -->
+        <div class="footer-contact">
+            <div><span class="icon-emoji">📱</span> 电话/微信</div>
+            <div class="phone">189-4877-0486</div>
+            <div><span class="icon-emoji">📍</span> 深圳南山 · 随时沟通</div>
+        </div>
+
+        <!-- 一句隐藏的动态slogan 微交互 -->
+        <div style="text-align:center; margin-top:1rem; font-size:0.8rem; color:#23688b; letter-spacing:0.5px; opacity:0.7; transition:0.3s;" onmouseover="this.style.opacity=1; this.style.color='#c4791f'" onmouseout="this.style.opacity=0.7; this.style.color='#23688b'">
+            ✦ 自信带风 · 每个孩子都能自信表达 ✦
+        </div>
+    </div>
+</div>
+
+<!-- 极简JS (增加一些动态效果: 加载时的小彩蛋 + 背景波纹点击趣味) -->
+<script>
+    (function() {
+        // 卡片加载时的小小欢迎 (家长看到会心一笑)
+        console.log("姚彦成老师 · 让孩子的英语学习带风 ✦");
+
+        // 增加背景微动: 鼠标移动时轻微视差 (仅装饰)
+        document.addEventListener('mousemove', function(e) {
+            const wave = document.querySelector('.wave-bg');
+            if (!wave) return;
+            const x = (e.clientX / window.innerWidth - 0.5) * 8;
+            const y = (e.clientY / window.innerHeight - 0.5) * 4;
+            wave.style.transform = `translate(${x}px, ${y}px)`;
+        });
+
+        // 让卡片内所有带 "牛津","伦敦" 的卡片额外加冕 (有趣)
+        const univs = document.querySelectorAll('.student-card');
+        univs.forEach(card => {
+            if (card.innerText.includes('牛津') || card.innerText.includes('伦敦') || card.innerText.includes('北大') || card.innerText.includes('浙大')) {
+                card.style.background = "linear-gradient(135deg, #fdf1d6, #ffe3b5)";
+                card.style.border = "1px solid #f5b342";
+            }
+        });
+
+        // 稍微延迟一点加一个飘浮动效 (用class)
+        setTimeout(() => {
+            document.querySelectorAll('.info-item, .badge-skill').forEach(el => {
+                el.style.transition = "all 0.25s ease";
+            });
+        }, 200);
+    })();
+</script>
+
+<!-- 额外手写风格点缀: 没有复杂库, 都是原生 -->
+
+</body></html>
