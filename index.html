@@ -15,11 +15,19 @@
             background: linear-gradient(145deg, #0b1f33 0%, #123b5e 40%, #1e4d6f 100%);
             background-attachment: fixed;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 1.5rem;
+            padding: 2rem 1.5rem 0;
             position: relative;
             overflow-x: hidden;
+        }
+
+        .page-main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
         }
 
         /* 动态波浪背景 (教育寓意：如海浪般涌动的知识) */
@@ -422,6 +430,160 @@
         .icon-emoji {
             filter: drop-shadow(0 2px 2px #205b7a);
         }
+
+        /* 工信部备案信息 — 始终贴在页面底部 */
+        .beian-footer {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            text-align: center;
+            padding: 1rem 1rem 1.5rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.78rem;
+            letter-spacing: 0.4px;
+            line-height: 1.8;
+        }
+
+        .beian-footer a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .beian-footer a:hover {
+            color: #ffd966;
+            text-decoration: underline;
+        }
+
+        .beian-footer .sep {
+            margin: 0 0.5rem;
+            opacity: 0.5;
+        }
+
+        /* ====== 响应式：PC 大屏优化 ====== */
+        @media (min-width: 1025px) {
+            body {
+                padding: 2.5rem 2rem 0;
+            }
+
+            .resume-card {
+                max-width: 640px;
+                border-radius: 40px;
+            }
+
+            .profile-header {
+                padding: 2.5rem 2.2rem 2rem;
+            }
+
+            .name {
+                font-size: 2.8rem;
+            }
+
+            .motto {
+                font-size: 2rem;
+            }
+
+            .main-content {
+                padding: 2.2rem 2rem 2.5rem;
+            }
+
+            .section {
+                margin-bottom: 2.4rem;
+            }
+
+            .bullet-list li {
+                font-size: 1.02rem;
+                margin-bottom: 0.9rem;
+            }
+
+            .award-grid {
+                gap: 1rem;
+            }
+
+            .student-showcase {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1rem;
+            }
+
+            .footer-contact {
+                padding: 1.5rem 2.2rem;
+            }
+
+            .footer-contact .phone {
+                font-size: 1.4rem;
+            }
+
+            .beian-footer {
+                font-size: 0.82rem;
+                padding: 1.2rem 1rem 1.8rem;
+            }
+        }
+
+        @media (min-width: 1440px) {
+            .resume-card {
+                max-width: 720px;
+            }
+
+            .student-showcase {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* ====== 响应式：平板 ====== */
+        @media (max-width: 1024px) and (min-width: 641px) {
+            .resume-card {
+                max-width: 560px;
+            }
+
+            .student-showcase {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* ====== 响应式：小屏手机 ====== */
+        @media (max-width: 420px) {
+            body {
+                padding: 1rem 0.8rem 0;
+            }
+
+            .resume-card {
+                border-radius: 36px 36px 32px 32px;
+            }
+
+            .profile-header {
+                padding: 1.6rem 1.2rem 1.2rem;
+            }
+
+            .name {
+                font-size: 2rem;
+            }
+
+            .motto {
+                font-size: 1.35rem;
+            }
+
+            .main-content {
+                padding: 1.4rem 1.1rem 1.6rem;
+            }
+
+            .award-grid {
+                grid-template-columns: 1fr;
+                gap: 0.6rem;
+            }
+
+            .student-showcase {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.7rem;
+            }
+
+            .footer-contact {
+                margin: 1.4rem -0.15rem -0.15rem -0.15rem;
+                padding: 1rem 1.2rem;
+                flex-direction: column;
+                gap: 0.6rem;
+                text-align: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -434,6 +596,7 @@
 </div>
 
 <!-- 主卡片 -->
+<div class="page-main">
 <div class="resume-card">
     <!-- 头部区域 -->
     <div class="profile-header">
@@ -535,6 +698,7 @@
         </div>
     </div>
 </div>
+</div>
 
 <!-- 极简JS (增加一些动态效果: 加载时的小彩蛋 + 背景波纹点击趣味) -->
 <script>
@@ -570,5 +734,10 @@
 </script>
 
 <!-- 额外手写风格点缀: 没有复杂库, 都是原生 -->
+
+<!-- 工信部备案信息 (页面最底部) -->
+<div class="beian-footer">
+    <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">渝ICP备2026020783号</a>
+</div>
 
 </body></html>
