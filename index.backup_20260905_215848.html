@@ -584,152 +584,9 @@
                 text-align: center;
             }
         }
-    /* ====== 新增：吸顶导航栏 ====== */
-    .top-nav {
-        position: fixed;
-        top: 0; left: 0; right: 0;
-        z-index: 100;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.3rem;
-        padding: 0.6rem 1rem;
-        background: rgba(11, 31, 51, 0.55);
-        backdrop-filter: blur(12px) saturate(180%);
-        -webkit-backdrop-filter: blur(12px) saturate(180%);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-        transform: translateY(-100%);
-        transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.3, 1);
-    }
-    .top-nav.show { transform: translateY(0); }
-    .top-nav a {
-        color: rgba(255, 255, 255, 0.78);
-        text-decoration: none;
-        font-size: 0.92rem;
-        font-weight: 500;
-        padding: 0.4rem 0.9rem;
-        border-radius: 30px;
-        transition: all 0.25s;
-        letter-spacing: 0.5px;
-    }
-    .top-nav a:hover { color: #fff; background: rgba(255, 255, 255, 0.12); }
-    .top-nav a.active {
-        color: #1e3b4f;
-        background: linear-gradient(135deg, #ffec9e, #ffd966);
-        box-shadow: 0 4px 12px rgba(255, 200, 80, 0.4);
-    }
-
-    /* ====== 新增：返回顶部按钮 ====== */
-    .back-top {
-        position: fixed;
-        right: 1.4rem; bottom: 1.6rem;
-        z-index: 90;
-        width: 50px; height: 50px;
-        border-radius: 50%;
-        border: none;
-        cursor: pointer;
-        background: linear-gradient(135deg, #1e5f7a, #2a86b3);
-        color: #fff;
-        font-size: 1.3rem;
-        box-shadow: 0 8px 22px rgba(0, 40, 70, 0.45);
-        opacity: 0;
-        transform: translateY(20px) scale(0.8);
-        pointer-events: none;
-        transition: all 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.2);
-    }
-    .back-top.show { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
-    .back-top:hover { background: linear-gradient(135deg, #ffd966, #f4b942); color: #1e3b4f; box-shadow: 0 10px 26px rgba(255, 200, 80, 0.5); }
-
-    /* ====== 新增：主题切换按钮 ====== */
-    .theme-btn {
-        position: fixed;
-        right: 1.4rem; bottom: 5.4rem;
-        z-index: 90;
-        width: 50px; height: 50px;
-        border-radius: 50%;
-        border: none;
-        cursor: pointer;
-        background: rgba(255, 255, 255, 0.9);
-        font-size: 1.4rem;
-        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3);
-        transition: transform 0.5s;
-    }
-    .theme-btn:hover { transform: rotate(180deg) scale(1.08); }
-    body.theme-gold { background: linear-gradient(145deg, #2b1d05 0%, #5e3f12 45%, #8a5e1f 100%); }
-    body.theme-teal { background: linear-gradient(145deg, #04201f 0%, #0c4a45 45%, #1c7d6f 100%); }
-
-    /* ====== 新增：打字机座右铭 ====== */
-    .typewriter {
-        display: inline-block;
-        border-right: 2px solid #ffd966;
-        padding-right: 3px;
-        animation: blink 0.8s step-end infinite;
-        min-height: 1.2em;
-    }
-    @keyframes blink { 0%, 100% { border-color: transparent; } 50% { border-color: #ffd966; } }
-
-    /* ====== 新增：联系弹窗 ====== */
-    .modal-mask {
-        position: fixed; inset: 0;
-        z-index: 200;
-        background: rgba(5, 20, 35, 0.6);
-        backdrop-filter: blur(6px);
-        display: flex; align-items: center; justify-content: center;
-        opacity: 0; pointer-events: none;
-        transition: opacity 0.3s;
-    }
-    .modal-mask.show { opacity: 1; pointer-events: auto; }
-    .modal-card {
-        width: min(90vw, 360px);
-        background: rgba(255, 255, 255, 0.96);
-        border-radius: 28px;
-        padding: 1.8rem 1.6rem 1.6rem;
-        text-align: center;
-        box-shadow: 0 30px 60px rgba(0, 20, 40, 0.5);
-        transform: translateY(20px) scale(0.95);
-        transition: transform 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.1);
-    }
-    .modal-mask.show .modal-card { transform: translateY(0) scale(1); }
-    .modal-card h3 { color: #113946; font-size: 1.3rem; margin-bottom: 1rem; }
-    .modal-card .row {
-        display: flex; align-items: center; justify-content: space-between;
-        gap: 0.6rem;
-        background: #eef6fb;
-        border-radius: 16px;
-        padding: 0.7rem 1rem;
-        margin-bottom: 0.7rem;
-        font-size: 1rem; color: #0c3a50; font-weight: 600;
-    }
-    .modal-card .row .copy {
-        border: none; cursor: pointer;
-        background: linear-gradient(135deg, #1e5f7a, #2a86b3);
-        color: #fff; font-size: 0.8rem; font-weight: 600;
-        padding: 0.35rem 0.8rem; border-radius: 20px;
-        transition: 0.2s;
-    }
-    .modal-card .row .copy:hover { background: #ffd966; color: #1e3b4f; }
-    .modal-card .close {
-        margin-top: 0.6rem; width: 100%;
-        border: none; cursor: pointer;
-        background: #113946; color: #fff;
-        padding: 0.7rem; border-radius: 16px; font-size: 0.95rem; font-weight: 600;
-    }
-    .modal-card .close:hover { background: #1e5f7a; }
-    .footer-contact { cursor: pointer; }
-    .footer-contact:hover { filter: brightness(1.05); }
     </style>
 </head>
 <body>
-<!-- 新增：吸顶导航栏 -->
-<nav class="top-nav" id="topNav">
-    <a href="#sec-hero" class="active">首页</a>
-    <a href="#sec-exp">教学经历</a>
-    <a href="#sec-feat">教学特点</a>
-    <a href="#sec-award">荣誉</a>
-    <a href="#sec-student">优秀学子</a>
-    <a href="#sec-contact">联系</a>
-</nav>
-
 <!-- 动态波浪背景 SVG (装饰) -->
 <div class="wave-bg" style="transform: translate(1.71354px, -1.41871px);">
     <svg viewBox="0 0 1440 320" preserveAspectRatio="none" width="100%" height="100%">
@@ -744,7 +601,7 @@
     <!-- 头部区域 -->
     <div class="profile-header">
         <div class="name-title">
-            <div class="name" id="sec-hero">
+            <div class="name">
                 姚彦成
                 <small>Yao Yancheng</small>
             </div>
@@ -753,7 +610,7 @@
             </div>
         </div>
         <div class="motto">
-            <span class="typewriter" id="typewriter"></span>
+            <span>让孩子学习带风</span> ✦
         </div>
         <div class="motto" style="font-size: 1rem; font-style: normal; margin-top: 0.3rem; background: transparent; padding-left: 0;">
             Learning with confidence
@@ -771,7 +628,7 @@
     <!-- 主体内容 -->
     <div class="main-content">
         <!-- 教学经历 & 特点 -->
-        <div class="section" style="--i:1;" id="sec-exp">
+        <div class="section" style="--i:1;">
             <div class="section-title"><span>📘</span> 公立·机构·负责人</div>
             <ul class="bullet-list">
                 <li>深圳公立中学任教3年 + 近10年教育机构负责人，累计12年一线英语教学</li>
@@ -781,7 +638,7 @@
         </div>
 
         <!-- 教学特点 三个亮点 -->
-        <div class="section" style="--i:2;" id="sec-feat">
+        <div class="section" style="--i:2;">
             <div class="section-title"><span>🎯</span> 教学特点</div>
             <ul class="bullet-list">
                 <li><strong>精准中高考考点</strong> — 框架式梳理语言疑难点，易懂易理解</li>
@@ -796,7 +653,7 @@
         </div>
 
         <!-- 获奖 & 证书 (双栏) -->
-        <div class="section" style="--i:3;" id="sec-award">
+        <div class="section" style="--i:3;">
             <div class="section-title"><span>🏆</span> 荣誉 · 技能</div>
             <div class="award-grid">
                 <div class="award-item"><span class="emoji">📌</span> 英语专业八级 (TEM-4口语笔试)</div>
@@ -809,7 +666,7 @@
         </div>
 
         <!-- 教学成果 学员去向 (动态卡片) -->
-        <div class="section" style="--i:4;" id="sec-student">
+        <div class="section" style="--i:4;">
             <div class="section-title"><span>🌟</span> 优秀学子 (部分)</div>
             <div class="student-showcase">
                 <div class="student-card">张*允 <span>深圳中学</span></div>
@@ -829,7 +686,7 @@
         </div>
 
         <!-- 底部联系方式，加强信任感 -->
-        <div class="footer-contact" id="sec-contact" onclick="openContact()">
+        <div class="footer-contact">
             <div><span class="icon-emoji">📱</span> 电话/微信</div>
             <div class="phone">189-4877-0486</div>
             <div><span class="icon-emoji">📍</span> 深圳南山 · 随时沟通</div>
@@ -846,24 +703,10 @@
 <!-- 极简JS (增加一些动态效果: 加载时的小彩蛋 + 背景波纹点击趣味) -->
 <script>
     (function() {
+        // 卡片加载时的小小欢迎 (家长看到会心一笑)
         console.log("姚彦成老师 · 让孩子的英语学习带风 ✦");
 
-        /* ---- 1. 打字机座右铭轮播 ---- */
-        const phrases = ["让孩子学习带风", "自信表达，未来可期", "方法对了，英语不难", "每个孩子都能闪闪发光"];
-        const tw = document.getElementById('typewriter');
-        let pIdx = 0, cIdx = 0, deleting = false;
-        function typeLoop() {
-            if (!tw) return;
-            const full = phrases[pIdx];
-            tw.textContent = deleting ? full.slice(0, cIdx--) : full.slice(0, cIdx++);
-            let delay = deleting ? 45 : 90;
-            if (!deleting && cIdx > full.length) { deleting = true; delay = 1400; }
-            else if (deleting && cIdx < 0) { deleting = false; cIdx = 0; pIdx = (pIdx + 1) % phrases.length; delay = 400; }
-            setTimeout(typeLoop, delay);
-        }
-        typeLoop();
-
-        /* ---- 2. 波浪背景鼠标视差 ---- */
+        // 增加背景微动: 鼠标移动时轻微视差 (仅装饰)
         document.addEventListener('mousemove', function(e) {
             const wave = document.querySelector('.wave-bg');
             if (!wave) return;
@@ -872,92 +715,25 @@
             wave.style.transform = `translate(${x}px, ${y}px)`;
         });
 
-        /* ---- 3. 名校学子加冕 (保留原有彩蛋) ---- */
-        document.querySelectorAll('.student-card').forEach(card => {
-            if (['牛津','伦敦','北大','浙大'].some(k => card.innerText.includes(k))) {
+        // 让卡片内所有带 "牛津","伦敦" 的卡片额外加冕 (有趣)
+        const univs = document.querySelectorAll('.student-card');
+        univs.forEach(card => {
+            if (card.innerText.includes('牛津') || card.innerText.includes('伦敦') || card.innerText.includes('北大') || card.innerText.includes('浙大')) {
                 card.style.background = "linear-gradient(135deg, #fdf1d6, #ffe3b5)";
                 card.style.border = "1px solid #f5b342";
             }
         });
 
-        /* ---- 4. 吸顶导航 + 滚动高亮 ---- */
-        const nav = document.getElementById('topNav');
-        const navLinks = Array.from(document.querySelectorAll('.top-nav a'));
-        const sections = navLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
-        window.addEventListener('scroll', () => {
-            const y = window.scrollY;
-            nav.classList.toggle('show', y > 300);
-            let current = sections[0];
-            sections.forEach(s => { if (s.offsetTop - 120 <= y) current = s; });
-            navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current.id));
-        }, { passive: true });
-        // 平滑滚动 (兼容无原生支持)
-        navLinks.forEach(a => a.addEventListener('click', e => {
-            e.preventDefault();
-            const target = document.querySelector(a.getAttribute('href'));
-            if (target) window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
-        }));
-
-        /* ---- 5. 返回顶部 ---- */
-        const backTop = document.getElementById('backTop');
-        backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-        /* ---- 6. 主题配色切换 ---- */
-        const themes = ['', 'theme-gold', 'theme-teal'];
-        let ti = 0;
-        document.getElementById('themeBtn').addEventListener('click', () => {
-            document.body.classList.remove(...themes);
-            ti = (ti + 1) % themes.length;
-            if (themes[ti]) document.body.classList.add(themes[ti]);
-        });
-
-        /* ---- 7. 联系弹窗 ---- */
-        window.openContact = function() { document.getElementById('contactModal').classList.add('show'); };
-        window.closeContact = function() { document.getElementById('contactModal').classList.remove('show'); };
-        document.getElementById('contactModal').addEventListener('click', e => {
-            if (e.target.id === 'contactModal') closeContact();
-        });
-        window.copyWechat = function() {
-            const num = 'yaoyancheng';
-            const btn = event.target;
-            const done = () => { btn.textContent = '已复制'; setTimeout(() => btn.textContent = '复制', 1500); };
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(num).then(done).catch(fallbackCopy);
-            } else { fallbackCopy(); }
-            function fallbackCopy() {
-                const ta = document.createElement('textarea');
-                ta.value = num; document.body.appendChild(ta); ta.select();
-                try { document.execCommand('copy'); done(); } catch(e) {}
-                document.body.removeChild(ta);
-            }
-        };
+        // 稍微延迟一点加一个飘浮动效 (用class)
+        setTimeout(() => {
+            document.querySelectorAll('.info-item, .badge-skill').forEach(el => {
+                el.style.transition = "all 0.25s ease";
+            });
+        }, 200);
     })();
 </script>
 
 <!-- 额外手写风格点缀: 没有复杂库, 都是原生 -->
-
-<!-- 新增：悬浮按钮 -->
-<button class="theme-btn" id="themeBtn" title="切换主题配色">🎨</button>
-<button class="back-top" id="backTop" title="返回顶部">↑</button>
-
-<!-- 新增：联系弹窗 -->
-<div class="modal-mask" id="contactModal">
-    <div class="modal-card">
-        <h3>📱 联系姚老师</h3>
-        <div class="row">
-            <span>📞 189-4877-0486</span>
-            <a class="copy" href="tel:18948770486" style="text-decoration:none;">拨打</a>
-        </div>
-        <div class="row">
-            <span id="wechatNum">💬 微信号：yaoyancheng</span>
-            <button class="copy" onclick="copyWechat()">复制</button>
-        </div>
-        <div class="row">
-            <span>📍 深圳南山 · 随时沟通</span>
-        </div>
-        <button class="close" onclick="closeContact()">关闭</button>
-    </div>
-</div>
 
 <!-- 工信部备案信息 (页面最底部) -->
 <div class="beian-footer">
