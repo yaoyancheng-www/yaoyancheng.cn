@@ -2,7 +2,14 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="35549945-1845-403a-bbed-9922c2bcf25a" name="yaoyancheng" url="http://yaoyancheng.cn">
+      <webServer id="35549945-1845-403a-bbed-9922c2bcf25a" name="yaoyancheng.cn" url="http://yaoyancheng.cn">
+        <fileTransfer host="119.29.234.149" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="056aa2ea-a80e-47e2-b68a-efacb31e223f" name="mbti.pw" url="http://119.29.234.149">
         <fileTransfer host="119.29.234.149" port="21">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
